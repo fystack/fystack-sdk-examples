@@ -28,19 +28,19 @@ cp .env.example .env
 FYSTACK_API_KEY=your_api_key_here
 FYSTACK_API_SECRET=your_api_secret_here
 FYSTACK_WORKSPACE_ID=your_workspace_id_here
-FYSTACK_ENVIRONMENT=sandbox
+FYSTACK_ENVIRONMENT=production
 ```
 
 ## Available Examples
 
-| Command | Description |
-|---------|-------------|
-| `npm run create-wallet` | Create a new MPC wallet |
+| Command                       | Description                        |
+| ----------------------------- | ---------------------------------- |
+| `npm run create-wallet`       | Create a new MPC wallet            |
 | `npm run get-deposit-address` | Get deposit addresses for a wallet |
-| `npm run create-withdrawal` | Request a withdrawal from a wallet |
-| `npm run eth-transfer` | Execute an Ethereum transfer |
-| `npm run solana-transfer` | Execute a Solana transfer |
-| `npm run get-public-key` | Get the public key for a wallet |
+| `npm run create-withdrawal`   | Request a withdrawal from a wallet |
+| `npm run eth-transfer`        | Execute an Ethereum transfer       |
+| `npm run solana-transfer`     | Execute a Solana transfer          |
+| `npm run get-public-key`      | Get the public key for a wallet    |
 
 ---
 
@@ -77,16 +77,16 @@ The example creates an **MPC wallet** by default. You can change the wallet type
 
 ```typescript
 // MPC Wallet (default) - Multi-Party Computation
-walletType: WalletType.MPC
+walletType: WalletType.MPC;
 
 // Hyper Wallet - Alternative wallet type
-walletType: WalletType.Hyper
+walletType: WalletType.Hyper;
 ```
 
-| Wallet Type | Description |
-|-------------|-------------|
-| `WalletType.MPC` | Multi-Party Computation wallet with distributed key management |
-| `WalletType.Hyper` | Hyper wallet for different use cases |
+| Wallet Type        | Description                                                    |
+| ------------------ | -------------------------------------------------------------- |
+| `WalletType.MPC`   | Multi-Party Computation wallet with distributed key management |
+| `WalletType.Hyper` | Hyper wallet for different use cases                           |
 
 ### Notes
 
@@ -156,11 +156,11 @@ Status: PENDING_APPROVAL
 
 ### Response Fields
 
-| Field | Description |
-|-------|-------------|
-| `Auto Approved` | Whether the withdrawal was automatically approved based on your workspace policies |
-| `Withdrawal ID` | Unique identifier for tracking the withdrawal |
-| `Status` | Current status (`PENDING_APPROVAL`, `APPROVED`, `PROCESSING`, `COMPLETED`, `FAILED`) |
+| Field           | Description                                                                          |
+| --------------- | ------------------------------------------------------------------------------------ |
+| `Auto Approved` | Whether the withdrawal was automatically approved based on your workspace policies   |
+| `Withdrawal ID` | Unique identifier for tracking the withdrawal                                        |
+| `Status`        | Current status (`PENDING_APPROVAL`, `APPROVED`, `PROCESSING`, `COMPLETED`, `FAILED`) |
 
 ### Notes
 
@@ -172,25 +172,25 @@ Status: PENDING_APPROVAL
 
 ## Environment Variables Reference
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `FYSTACK_API_KEY` | Yes | Your Fystack API key |
-| `FYSTACK_API_SECRET` | Yes | Your Fystack API secret |
-| `FYSTACK_WORKSPACE_ID` | Yes | Your workspace ID |
-| `FYSTACK_ENVIRONMENT` | No | `sandbox` (default), `production`, or `local` |
-| `WALLET_ID` | For some ops | Wallet ID for operations requiring an existing wallet |
-| `ASSET_ID` | For withdrawals | Asset ID (get from `/api/v1/assets?symbol=ETH`) |
-| `ETH_RECIPIENT_ADDRESS` | For ETH ops | Ethereum recipient address |
-| `SOLANA_RECIPIENT_ADDRESS` | For SOL ops | Solana recipient address |
-| `ETHEREUM_RPC_URL` | No | Custom Ethereum RPC (default: Sepolia testnet) |
-| `SOLANA_RPC_URL` | No | Custom Solana RPC (default: Devnet) |
+| Variable                   | Required        | Description                                           |
+| -------------------------- | --------------- | ----------------------------------------------------- |
+| `FYSTACK_API_KEY`          | Yes             | Your Fystack API key                                  |
+| `FYSTACK_API_SECRET`       | Yes             | Your Fystack API secret                               |
+| `FYSTACK_WORKSPACE_ID`     | Yes             | Your workspace ID                                     |
+| `FYSTACK_ENVIRONMENT`      | No              | `sandbox` (default), `production`, or `local`         |
+| `WALLET_ID`                | For some ops    | Wallet ID for operations requiring an existing wallet |
+| `ASSET_ID`                 | For withdrawals | Asset ID (get from `/api/v1/assets?symbol=ETH`)       |
+| `ETH_RECIPIENT_ADDRESS`    | For ETH ops     | Ethereum recipient address                            |
+| `SOLANA_RECIPIENT_ADDRESS` | For SOL ops     | Solana recipient address                              |
+| `ETHEREUM_RPC_URL`         | No              | Custom Ethereum RPC (default: Sepolia testnet)        |
+| `SOLANA_RPC_URL`           | No              | Custom Solana RPC (default: Devnet)                   |
 
 ### Available Environments
 
 The `FYSTACK_ENVIRONMENT` variable maps to SDK environment constants:
 
-| `.env` Value | SDK Constant | Description |
-|--------------|--------------|-------------|
-| `sandbox` | `Environment.Sandbox` | Sandbox/testing environment (default) |
-| `production` | `Environment.Production` | Production environment |
-| `local` | `Environment.Local` | Local development environment |
+| `.env` Value | SDK Constant             | Description                           |
+| ------------ | ------------------------ | ------------------------------------- |
+| `sandbox`    | `Environment.Sandbox`    | Sandbox/testing environment (default) |
+| `production` | `Environment.Production` | Production environment                |
+| `local`      | `Environment.Local`      | Local development environment         |
