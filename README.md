@@ -41,6 +41,7 @@ FYSTACK_ENVIRONMENT=production
 | `npm run eth-transfer`        | Execute an Ethereum transfer       |
 | `npm run solana-transfer`     | Execute a Solana transfer          |
 | `npm run get-public-key`      | Get the public key for a wallet    |
+| `npm run sign-typed-data`     | Sign and verify an EIP-712 message |
 
 ---
 
@@ -167,6 +168,36 @@ Status: PENDING_APPROVAL
 - Withdrawals may require manual approval depending on your workspace configuration
 - The default amount is `0.0001` - modify the code to change this
 - Ensure your wallet has sufficient balance for the withdrawal amount plus network fees
+
+---
+
+## Sign Typed Data
+
+Sign a sample EIP-712 message with your Fystack Ethereum wallet using `EtherSigner.signTypedData`. The example uses nested `Person` and `Mail` types and verifies that the signature recovers the wallet's address.
+
+### Setup
+
+Set `FYSTACK_API_KEY`, `FYSTACK_API_SECRET`, and `WALLET_ID` in `.env`. Choose your API environment with `FYSTACK_ENVIRONMENT` (`sandbox`, `production`, or `local`).
+
+Set `ETHEREUM_RPC_URL` to an Ethereum RPC endpoint for the chain you want to use. The default is Sepolia. The SDK requires a provider for signing, and the example uses its chain ID in the typed-data domain.
+
+### Run
+
+```bash
+npm run sign-typed-data
+```
+
+The example prints the wallet address, primary type, typed-data digest, signature, and recovered address. It fails if the recovered address does not match the wallet address and releases the provider when finished.
+
+You can also import the function and pass a wallet ID:
+
+```typescript
+import { signTypedData } from './src/examples/sign-typed-data'
+
+const signature = await signTypedData('your-wallet-id')
+```
+
+The sample message does not authorize token spending or submit an on-chain transaction.
 
 ---
 
