@@ -11,7 +11,8 @@
     "create-withdrawal": "ts-node src/examples/create-withdrawal.ts",
     "eth-transfer": "ts-node src/examples/eth-transfer.ts",
     "solana-transfer": "ts-node src/examples/solana-transfer.ts",
-    "get-public-key": "ts-node src/examples/get-public-key.ts"
+    "get-public-key": "ts-node src/examples/get-public-key.ts",
+    "sign-typed-data": "ts-node src/examples/sign-typed-data.ts"
   },
   "dependencies": {
     "@fystack/sdk": "^0.1.15",
