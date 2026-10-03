@@ -42,6 +42,7 @@ FYSTACK_ENVIRONMENT=production
 | `npm run solana-transfer`     | Execute a Solana transfer          |
 | `npm run get-public-key`      | Get the public key for a wallet    |
 | `npm run sign-typed-data`     | Sign and verify an EIP-712 message |
+| `npm run erc20-approve`       | Approve ERC20 token spending       |
 
 ---
 
@@ -192,12 +193,43 @@ The example prints the wallet address, primary type, typed-data digest, signatur
 You can also import the function and pass a wallet ID:
 
 ```typescript
-import { signTypedData } from './src/examples/sign-typed-data'
+import { signTypedData } from "./src/examples/sign-typed-data";
 
-const signature = await signTypedData('your-wallet-id')
+const signature = await signTypedData("your-wallet-id");
 ```
 
 The sample message does not authorize token spending or submit an on-chain transaction.
+
+---
+
+## ERC20 Approve
+
+Call `approve(spender, amount)` on an ERC20 contract from your Fystack Ethereum wallet. The example reads the current allowance, sends the approval transaction, waits for confirmation, and prints the new allowance.
+
+### Setup
+
+Set `FYSTACK_API_KEY`, `FYSTACK_API_SECRET`, and `WALLET_ID` in `.env`, and point `ETHEREUM_RPC_URL` at the chain the token lives on. The wallet needs ETH for gas.
+
+The token and spender addresses are hardcoded in `src/examples/erc20-approve.ts` (`TOKEN_ADDRESS`, `SPENDER_ADDRESS`). The spender defaults to Uniswap Permit2.
+
+### Run
+
+```bash
+npm run erc20-approve
+```
+
+You can also import the function and pass your own values:
+
+```typescript
+import { erc20Approve } from "./src/examples/erc20-approve";
+
+await erc20Approve(
+  "your-wallet-id",
+  "0xTokenAddress",
+  "0xSpenderAddress",
+  "100"
+);
+```
 
 ---
 
