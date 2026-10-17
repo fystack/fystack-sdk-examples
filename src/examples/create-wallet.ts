@@ -32,7 +32,7 @@ async function createWallet() {
     credentials,
     environment,
     workspaceId,
-    logger: true,
+    debug: true,
   });
 
   try {

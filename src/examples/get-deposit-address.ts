@@ -8,7 +8,7 @@ async function getDepositAddress(targetWalletId?: string) {
     credentials,
     environment,
     workspaceId,
-    logger: true,
+    debug: true,
   });
 
   const wId = targetWalletId || walletId;
