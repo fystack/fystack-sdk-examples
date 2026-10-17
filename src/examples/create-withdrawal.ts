@@ -20,7 +20,7 @@ async function createWithdrawal(
     credentials,
     environment,
     workspaceId,
-    logger: true,
+    debug: true,
   });
 
   const wId = targetWalletId || walletId;

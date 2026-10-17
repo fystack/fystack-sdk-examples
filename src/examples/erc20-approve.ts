@@ -1,5 +1,5 @@
 import { Contract, JsonRpcProvider, formatUnits, parseUnits } from "ethers";
-import { EtherSigner } from "@fystack/sdk";
+import { EtherSigner, Environment } from "@fystack/sdk";
 import { credentials, environment, walletId, ethereumRpcUrl } from "../config";
 
 const ERC20_ABI = [
@@ -31,7 +31,7 @@ async function erc20Approve(
   const provider = new JsonRpcProvider(ethereumRpcUrl);
 
   try {
-    const signer = new EtherSigner(credentials, environment, provider);
+    const signer = new EtherSigner(credentials, Environment.Local, provider);
     signer.setWallet(wId);
 
     const walletAddress = await signer.getAddress();
